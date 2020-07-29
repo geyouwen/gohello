@@ -1,0 +1,15 @@
+stages:
+- name: build
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: geyouwen/gohello
+      pushRemote: true
+      registry: index.docker.io
+- name: depoly
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
+timeout: 60
+notification: {}
